@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.serliunx</groupId>
+    <artifactId>humming-cache</artifactId>
+    <version>${core.version}</version>
+
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>humming-cache-core</module>
+        <module>humming-cache-spring</module>
+        <module>humming-cache-spring-boot-starter</module>
+        <module>humming-cache-support-redis</module>
+        <module>humming-cache-support-mysql</module>
+    </modules>
+
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <core.version>1.0.0-alpha</core.version>
+        <junit.version>4.13.2</junit.version>
+        <spring.version>5.3.39</spring.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- core -->
+            <dependency>
+                <groupId>com.serliunx</groupId>
+                <artifactId>humming-cache-core</artifactId>
+                <version>${core.version}</version>
+            </dependency>
+            <!-- for test -->
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <!-- spring-support -->
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-context-support</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+</project>
