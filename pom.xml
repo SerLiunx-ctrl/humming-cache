@@ -6,7 +6,7 @@
 
     <groupId>com.serliunx</groupId>
     <artifactId>humming-cache</artifactId>
-    <version>${core.version}</version>
+    <version>1.0.0-alpha</version>
 
     <packaging>pom</packaging>
 

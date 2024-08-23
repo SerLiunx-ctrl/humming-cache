@@ -1,7 +1,7 @@
-package com.serliunx.hummingcache.manager;
+package com.serliunx.hummingcache.core.manager;
 
-import com.serliunx.hummingcache.exception.CacheKeyIllegalException;
-import com.serliunx.hummingcache.loader.CacheLoader;
+import com.serliunx.hummingcache.core.exception.CacheKeyIllegalException;
+import com.serliunx.hummingcache.core.loader.CacheLoader;
 
 import java.util.concurrent.locks.Lock;
 

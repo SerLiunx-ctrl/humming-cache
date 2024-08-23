@@ -1,6 +1,6 @@
-package com.serliunx.hummingcache.loader;
+package com.serliunx.hummingcache.core.loader;
 
-import com.serliunx.hummingcache.exception.CacheKeyIllegalException;
+import com.serliunx.hummingcache.core.exception.CacheKeyIllegalException;
 
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.TimeUnit;

@@ -1,6 +1,6 @@
-package com.serliunx.hummingcache.support;
+package com.serliunx.hummingcache.core.support;
 
-import com.serliunx.hummingcache.loader.CacheLoader;
+import com.serliunx.hummingcache.core.loader.CacheLoader;
 
 import java.util.concurrent.TimeUnit;
 

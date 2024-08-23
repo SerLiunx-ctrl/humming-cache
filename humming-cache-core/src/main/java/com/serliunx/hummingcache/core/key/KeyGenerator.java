@@ -1,4 +1,4 @@
-package com.serliunx.hummingcache.key;
+package com.serliunx.hummingcache.core.key;
 
 /**
  * 缓存键生成器

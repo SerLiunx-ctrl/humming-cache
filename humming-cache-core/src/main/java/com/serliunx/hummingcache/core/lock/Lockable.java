@@ -1,4 +1,4 @@
-package com.serliunx.hummingcache.lock;
+package com.serliunx.hummingcache.core.lock;
 
 import java.util.concurrent.locks.Lock;
 

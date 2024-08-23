@@ -1,9 +1,9 @@
-package com.serliunx.hummingcache.manager;
+package com.serliunx.hummingcache.core.manager;
 
-import com.serliunx.hummingcache.key.KeyGenerator;
-import com.serliunx.hummingcache.loader.CacheLoader;
-import com.serliunx.hummingcache.loader.MapCacheLoader;
-import com.serliunx.hummingcache.support.Trigger;
+import com.serliunx.hummingcache.core.support.Trigger;
+import com.serliunx.hummingcache.core.key.KeyGenerator;
+import com.serliunx.hummingcache.core.loader.CacheLoader;
+import com.serliunx.hummingcache.core.loader.MapCacheLoader;
 
 import java.util.concurrent.TimeUnit;
 import java.util.function.Consumer;

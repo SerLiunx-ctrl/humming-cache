@@ -1,4 +1,4 @@
-package com.serliunx.hummingcache.loader;
+package com.serliunx.hummingcache.core.loader;
 
 import java.lang.ref.WeakReference;
 import java.util.concurrent.ConcurrentHashMap;

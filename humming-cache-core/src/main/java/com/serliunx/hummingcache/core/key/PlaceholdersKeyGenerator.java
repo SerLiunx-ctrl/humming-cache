@@ -1,4 +1,4 @@
-package com.serliunx.hummingcache.key;
+package com.serliunx.hummingcache.core.key;
 
 /**
  * 占位符式键生成器

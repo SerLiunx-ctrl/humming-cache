@@ -1,4 +1,4 @@
-package com.serliunx.hummingcache.exception;
+package com.serliunx.hummingcache.core.exception;
 
 import java.util.function.Consumer;
 

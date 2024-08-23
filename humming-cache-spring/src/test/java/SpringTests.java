@@ -1,10 +1,18 @@
+import com.serliunx.hummingcache.core.loader.CacheLoader;
 import com.serliunx.hummingcache.spring.annotation.EnableHummingCache;
 import org.junit.Test;
+import org.springframework.beans.factory.InitializingBean;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * @author <a href="mailto:serliunx@yeah.net">SerLiunx</a>
@@ -17,12 +25,28 @@ public class SpringTests {
 	public void testSpring() {
 		ApplicationContext applicationContext = new AnnotationConfigApplicationContext(GlobalConfiguration.class);
 
-		System.out.println(Arrays.toString(applicationContext.getBeanDefinitionNames()));
+		CacheService cacheService = applicationContext.getBean(CacheService.class);
 	}
 
 	@Configuration
 	@EnableHummingCache
 	public static class GlobalConfiguration {
 
+		@Bean
+		public CacheService cacheService() {
+			return new CacheService();
+		}
+	}
+
+	@Component
+	public static class CacheService implements InitializingBean {
+
+		@Autowired(required = false)
+		private List<CacheLoader> cacheLoaders = new ArrayList<>();
+
+		@Override
+		public void afterPropertiesSet() throws Exception {
+			cacheLoaders.forEach(System.out::println);
+		}
 	}
 }

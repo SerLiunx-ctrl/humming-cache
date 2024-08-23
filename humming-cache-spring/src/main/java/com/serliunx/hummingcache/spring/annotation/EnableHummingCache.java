@@ -1,5 +1,7 @@
 package com.serliunx.hummingcache.spring.annotation;
 
+import com.serliunx.hummingcache.core.loader.MapCacheLoader;
+import com.serliunx.hummingcache.core.loader.WeakReferenceMapCacheLoader;
 import com.serliunx.hummingcache.spring.config.HummingCacheConfigurationSelector;
 import org.springframework.context.annotation.Import;
 
@@ -10,8 +12,8 @@ import java.lang.annotation.Target;
 
 /**
  * 是否启用缓存
- * <li> 启用后将自动装配两个默认的缓存介质 {@link com.serliunx.hummingcache.loader.MapCacheLoader} 及
- * {@link com.serliunx.hummingcache.loader.WeakReferenceMapCacheLoader}
+ * <li> 启用后将自动装配两个默认的缓存介质 {@link MapCacheLoader} 及
+ * {@link WeakReferenceMapCacheLoader}
  *
  * @author <a href="mailto:serliunx@yeah.net">SerLiunx</a>
  * @version 1.0.0

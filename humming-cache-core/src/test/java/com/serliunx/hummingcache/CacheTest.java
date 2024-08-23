@@ -1,10 +1,10 @@
 package com.serliunx.hummingcache;
 
 import com.serliunx.hummingcache.entity.Entity;
-import com.serliunx.hummingcache.loader.CacheLoader;
-import com.serliunx.hummingcache.loader.MapCacheLoader;
-import com.serliunx.hummingcache.manager.CacheManager;
-import com.serliunx.hummingcache.manager.WeakCacheManager;
+import com.serliunx.hummingcache.core.loader.CacheLoader;
+import com.serliunx.hummingcache.core.loader.MapCacheLoader;
+import com.serliunx.hummingcache.core.manager.CacheManager;
+import com.serliunx.hummingcache.core.manager.WeakCacheManager;
 import org.junit.Test;
 
 import java.util.concurrent.TimeUnit;
@@ -21,7 +21,7 @@ public class CacheTest {
 		CacheLoader cacheLoader = new MapCacheLoader();
 		CacheManager<Entity> manager = new WeakCacheManager<Entity>(cacheLoader)
 				.key("cache_test:{num}", 1)
-				.ttl(1, TimeUnit.MINUTES)
+				.ttl(6, TimeUnit.MILLISECONDS)
 				.whenExpired(() -> System.out.println("cache expired."))
 				.supplier(() -> new Entity(16, "jack"))
 				.reusable()
@@ -29,7 +29,7 @@ public class CacheTest {
 		System.out.println(manager.get());
 		System.out.println(manager.get());
 
-		TimeUnit.MILLISECONDS.sleep(2);
+		TimeUnit.MILLISECONDS.sleep(4);
 
 		System.out.println(manager.get());
 	}

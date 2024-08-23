@@ -1,6 +1,6 @@
-package com.serliunx.hummingcache.loader;
+package com.serliunx.hummingcache.core.loader;
 
-import com.serliunx.hummingcache.lock.Lockable;
+import com.serliunx.hummingcache.core.lock.Lockable;
 
 import java.util.concurrent.TimeUnit;
 

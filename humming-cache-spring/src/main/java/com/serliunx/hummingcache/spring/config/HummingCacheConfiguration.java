@@ -1,7 +1,7 @@
 package com.serliunx.hummingcache.spring.config;
 
-import com.serliunx.hummingcache.loader.MapCacheLoader;
-import com.serliunx.hummingcache.loader.WeakReferenceMapCacheLoader;
+import com.serliunx.hummingcache.core.loader.MapCacheLoader;
+import com.serliunx.hummingcache.core.loader.WeakReferenceMapCacheLoader;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;

@@ -1,4 +1,4 @@
-package com.serliunx.hummingcache.support;
+package com.serliunx.hummingcache.core.support;
 
 /**
  * @author <a href="mailto:serliunx@yeah.net">SerLiunx</a>

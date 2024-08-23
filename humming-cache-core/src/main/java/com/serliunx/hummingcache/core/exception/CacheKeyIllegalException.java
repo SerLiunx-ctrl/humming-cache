@@ -1,4 +1,4 @@
-package com.serliunx.hummingcache.exception;
+package com.serliunx.hummingcache.core.exception;
 
 /**
  * 异常: 缓存键为空

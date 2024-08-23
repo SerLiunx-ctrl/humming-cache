@@ -1,9 +1,7 @@
-package com.serliunx.hummingcache.key;
-
-import com.serliunx.hummingcache.annotation.CacheKeyValue;
+package com.serliunx.hummingcache.core.key;
 
 /**
- * 依赖外部对象生成的键 {@link ObjectFieldsKeyGenerator}
+ * 依赖外部对象生成的键
  *
  * @author <a href="mailto:serliunx@yeah.net">SerLiunx</a>
  * @version 1.0.0
@@ -12,7 +10,6 @@ import com.serliunx.hummingcache.annotation.CacheKeyValue;
 public class ObjectFieldsKeyGenerator implements KeyGenerator {
 
 	private static final PlaceholdersKeyGenerator PLACEHOLDERS_KEY_GENERATOR = new PlaceholdersKeyGenerator();
-	private static final Class<CacheKeyValue> ANNOTATION_CLASS = CacheKeyValue.class;
 
 	@Override
 	public String generate(String rawKey, Object... objects) {
