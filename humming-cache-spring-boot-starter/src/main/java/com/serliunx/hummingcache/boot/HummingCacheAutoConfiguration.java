@@ -1,4 +1,4 @@
-package com.serliunx.hummingcache.boot.core;
+package com.serliunx.hummingcache.boot;
 
 import com.serliunx.hummingcache.core.loader.MapCacheLoader;
 import com.serliunx.hummingcache.core.loader.WeakReferenceMapCacheLoader;
