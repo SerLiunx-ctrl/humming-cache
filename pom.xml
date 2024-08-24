@@ -14,8 +14,6 @@
         <module>humming-cache-core</module>
         <module>humming-cache-spring</module>
         <module>humming-cache-spring-boot-starter</module>
-        <module>humming-cache-support-redis</module>
-        <module>humming-cache-support-mysql</module>
     </modules>
 
     <properties>
@@ -26,6 +24,7 @@
         <junit.version>4.13.2</junit.version>
         <spring.version>5.3.39</spring.version>
         <boot.version>2.7.18</boot.version>
+        <jedis.version>5.1.5</jedis.version>
     </properties>
 
     <dependencyManagement>
@@ -75,13 +74,6 @@
                         <artifactId>spring-core</artifactId>
                     </exclusion>
                 </exclusions>
-            </dependency>
-
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-configuration-processor</artifactId>
-                <version>${boot.version}</version>
-                <scope>provided</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>
