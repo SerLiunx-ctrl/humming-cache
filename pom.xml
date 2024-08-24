@@ -25,6 +25,7 @@
         <core.version>1.0.0-alpha</core.version>
         <junit.version>4.13.2</junit.version>
         <spring.version>5.3.39</spring.version>
+        <boot.version>2.7.18</boot.version>
     </properties>
 
     <dependencyManagement>
@@ -33,6 +34,13 @@
             <dependency>
                 <groupId>com.serliunx</groupId>
                 <artifactId>humming-cache-core</artifactId>
+                <version>${core.version}</version>
+            </dependency>
+
+            <!-- cache-spring -->
+            <dependency>
+                <groupId>com.serliunx</groupId>
+                <artifactId>humming-cache-spring</artifactId>
                 <version>${core.version}</version>
             </dependency>
 
@@ -49,6 +57,30 @@
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-context-support</artifactId>
                 <version>${spring.version}</version>
+                <scope>provided</scope>
+            </dependency>
+
+            <!-- spring-boot-autoconfigure -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-autoconfigure</artifactId>
+                <version>${boot.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.springframework</groupId>
+                        <artifactId>spring-context</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.springframework</groupId>
+                        <artifactId>spring-core</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-configuration-processor</artifactId>
+                <version>${boot.version}</version>
                 <scope>provided</scope>
             </dependency>
         </dependencies>
