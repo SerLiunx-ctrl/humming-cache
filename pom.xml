@@ -35,6 +35,7 @@
                 <artifactId>humming-cache-core</artifactId>
                 <version>${core.version}</version>
             </dependency>
+
             <!-- for test -->
             <dependency>
                 <groupId>junit</groupId>
@@ -42,11 +43,13 @@
                 <version>${junit.version}</version>
                 <scope>test</scope>
             </dependency>
+
             <!-- spring-support -->
             <dependency>
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-context-support</artifactId>
                 <version>${spring.version}</version>
+                <scope>provided</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>
