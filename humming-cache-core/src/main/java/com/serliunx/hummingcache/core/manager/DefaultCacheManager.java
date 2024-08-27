@@ -3,8 +3,6 @@ package com.serliunx.hummingcache.core.manager;
 import com.serliunx.hummingcache.core.exception.CacheKeyIllegalException;
 import com.serliunx.hummingcache.core.loader.CacheLoader;
 
-import java.util.concurrent.locks.Lock;
-
 /**
  * 默认的缓存管理/调度工具.
  * <li> 大部分情况下是够用的, 可以基于{@link CacheManager} 自行实现
@@ -26,14 +24,12 @@ public class DefaultCacheManager<T> extends AbstractCacheManager<T> {
 			throw new CacheKeyIllegalException();
 		}
 		T result = null;
-		Lock lock = keyLock ? cacheLoader.lock(key) : null;
 		try {
 			if (onlyAbsent && cacheLoader.hasKey(key)) {
 				return cacheLoader.get(key);
 			}
-			// 由内置缓存触发器和强制更新决定是否需要更新缓存
-			if ((trigger != null
-					&& trigger.apply(cacheLoader, key)) || forceRefresh) {
+			// 由缓存触发器和强制更新决定是否需要更新缓存
+			if (forceRefresh || (trigger != null && trigger.apply(cacheLoader, key))) {
 				runExpirationHandler();
 				result = supplier.get();
 				cacheLoader.put(key, result, timeout, timeUnit);
@@ -45,9 +41,7 @@ public class DefaultCacheManager<T> extends AbstractCacheManager<T> {
 			}
 			// 正常触发缓存更新
 			try {
-				if (lock != null) {
-					lock.lock();
-				}
+				tryLock();
 				if (cacheLoader.hasKey(key)) {
 					return cacheLoader.get(key);
 				}
@@ -62,9 +56,7 @@ public class DefaultCacheManager<T> extends AbstractCacheManager<T> {
 					cacheLoader.put(key, result, timeout, timeUnit);
 				}
 			} finally {
-				if (lock != null) {
-					lock.unlock();
-				}
+				tryUnlock();
 			}
 		} catch (Throwable throwable) {
 			runExceptionHandler(throwable);

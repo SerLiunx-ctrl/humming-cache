@@ -12,7 +12,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * @version 1.0.1
  * @since 2024/8/13
  */
-public final class WeakReferenceMapCacheLoader extends MapCacheLoader {
+public class WeakReferenceMapCacheLoader extends MapCacheLoader {
 
 	private final ConcurrentHashMap<String, WeakReference<CacheNode>> WEAK_CACHE_MAP = new ConcurrentHashMap<>(256);
 

@@ -8,6 +8,7 @@ import com.serliunx.hummingcache.core.loader.CacheLoader;
 import com.serliunx.hummingcache.core.support.Assert;
 
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.locks.Lock;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Supplier;
@@ -134,6 +135,35 @@ public abstract class AbstractCacheManager<T> implements CacheManager<T> {
 	@Override
 	public Supplier<T> getSupplier() {
 		return supplier;
+	}
+
+	/**
+	 * 获取缓存键锁
+	 */
+	protected Lock getLock() {
+		return cacheLoader.lock(key);
+	}
+
+	/**
+	 * 检查是否需要锁定
+	 * <li> 需要锁定时会尝试加锁
+	 */
+	protected void tryLock() {
+		Lock lock = getLock();
+		if (lock != null) {
+			lock.lock();
+		}
+	}
+
+	/**
+	 * 检查是否需要释放锁
+	 * <li> 需要锁定时会释放锁
+	 */
+	protected void tryUnlock() {
+		Lock lock = getLock();
+		if (lock != null) {
+			lock.unlock();
+		}
 	}
 
 	/**

@@ -17,13 +17,12 @@ import java.util.concurrent.locks.ReentrantLock;
  * @version 1.0.0
  * @since 2024/8/13
  */
-public class MapCacheLoader implements CacheLoader {
+public class MapCacheLoader extends AbstractCacheLoader implements CacheLoader {
 
 	/**
 	 * 使用CHM实现的缓存池
 	 */
 	private final ConcurrentHashMap<String, CacheNode> CACHE_MAP = new ConcurrentHashMap<>(256);
-	private final ConcurrentHashMap<String, Lock> LOCK_MAP = new ConcurrentHashMap<>(256);
 
 	@Override
 	@SuppressWarnings("unchecked")
@@ -67,20 +66,6 @@ public class MapCacheLoader implements CacheLoader {
 	}
 
 	@Override
-	public void removeIfAlive(String key) {
-		if (isAlive(key)) {
-			delete(key);
-		}
-	}
-
-	@Override
-	public void removeIfExpired(String key) {
-		if (!isAlive(key)) {
-			delete(key);
-		}
-	}
-
-	@Override
 	public long ttl(String key) {
 		CacheNode node = getNode(key);
 		if (node == null) {
@@ -102,19 +87,8 @@ public class MapCacheLoader implements CacheLoader {
 	}
 
 	@Override
-	public boolean isAlive(String key) {
-		return ttl(key) > 0;
-	}
-
-	@Override
 	public boolean hasKey(String key) {
 		return containsKey(key);
-	}
-
-	@Override
-	public Lock lock(String key) {
-		LOCK_MAP.putIfAbsent(key, new ReentrantLock());
-		return LOCK_MAP.get(key);
 	}
 
 	/**
@@ -143,7 +117,6 @@ public class MapCacheLoader implements CacheLoader {
 		return System.currentTimeMillis();
 	}
 
-	@SuppressWarnings("all")
 	protected static class CacheNode {
 
 		/**
